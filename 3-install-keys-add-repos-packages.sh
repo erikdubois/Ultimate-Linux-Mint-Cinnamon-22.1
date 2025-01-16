@@ -49,6 +49,16 @@ sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.
 echo "Adding the repo"
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
+
+
+echo "################################################################"
+echo "Spotify"
+echo "################################################################"
+echo
+
+curl -sS https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+
 echo "################################################################"
 echo "Alacritty"
 echo "################################################################"
@@ -65,6 +75,7 @@ sudo apt update
 #sudo apt install -y brave-browser
 #sudo apt install -y code
 sudo apt install -y alacritty
+sudo apt install -y spotify-client
 
 echo "################################################################"
 echo "###################    Installation Done  ######################"
